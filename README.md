@@ -53,6 +53,7 @@ Emu.configure do |config|
 
   config.client_secret = <brightcove_client_secret>
 end
+```
 
 ## Development
 

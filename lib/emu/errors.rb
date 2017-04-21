@@ -7,12 +7,13 @@ module Emu
 
       def initialize(http_status, response_body)
         @http_status = http_status
-        @error_message = response_body["error_code"] + ": " + response_body["message"]
 
-        message = @error_message
+        message = response_body["error_code"] || ""
+        message += " #{response_body['message']}" if response_body["message"]
         message += " [HTTP #{http_status}]" if http_status
 
-        super(message)
+        @error_message = message
+        super(@error_message)
       end
     end
 

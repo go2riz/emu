@@ -5,17 +5,17 @@ module Emu
     class API
       include Video
 
-      def api(path, args = {}, verb = 'get', options = {})
-        raise AuthenticationError.new(nil, { message: "API requires an access token" }) unless Emu::Oauth2.get_token.present?
+      def api(url, args = {}, verb = 'get', options = {})
+        raise AuthenticationError.new(nil, { message: "API requires an access token" }) unless Emu::OAuth2.get_token
 
-        response = Emu.make_request(path, args, verb, options)
+        response = Emu.make_request(url, args, verb, options)
 
         if response.status.to_i >=400 && response.status.to_i < 500
-          raise ClientError.new(response.status.to_i, response.body)
+          raise ClientError.new(response.status.to_i, response.body.first)
         end
 
         if response.status.to_i >= 500
-          raise ServerError.new(response.status.to_i, response.body)
+          raise ServerError.new(response.status.to_i, response.body.first)
         end
 
         response

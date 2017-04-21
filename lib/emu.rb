@@ -30,7 +30,7 @@ module Emu
     end
   end
 
-  def self.make_request(path, args, verb, options = {})
-    HTTPService.make_request(HTTPService::Request.new(path: path, args: args, verb: verb, options: options))
+  def self.make_request(url, args, verb, options = {})
+    HTTPService.make_request(HTTPService::Request.new(url: url, args: args, verb: verb, options: options))
   end
 end
