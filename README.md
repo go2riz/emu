@@ -18,9 +18,41 @@ Or install it yourself as:
 
     $ gem install emu
 
-## Usage
+## Configuration
 
-TODO: Write usage instructions here
+```ruby
+require 'redis'
+
+Emu.configure do |config|
+  # Emu's connection to Redis
+  # 
+  # Default: localhost:6379/0
+  config.redis = Redis.new(host: 'localhost', port: '6379', db: 0)
+
+  # Brightcove site url
+  #
+  # Default: https://data.brightcove.com/
+  config.site = "https://data.brightcove.com/"
+
+  # Brightcove token url
+  #
+  # Default: https://oauth.brightcove.com/v3/access_token
+  config.token_url = "https://oauth.brightcove.com/v3/access_token"
+
+  # A prefix for all keys Emu uses.
+  #
+  # Default: emu
+  config.redis_prefix = :emu
+
+  # Api path for Brightcove api
+  #
+  # Default: https://cms.api.brightcove.com/v1/
+  config.api_path = "https://cms.api.brightcove.com/v1/"
+
+  config.client_id = <brightcove_client_id>
+
+  config.client_secret = <brightcove_client_secret>
+end
 
 ## Development
 

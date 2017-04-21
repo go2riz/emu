@@ -12,7 +12,7 @@ module Emu
 
     DEFAULT_MIDDLEWARE = Proc.new do |faraday|
       faraday.adapter Faraday.default_adapter
-      faraday.request :oauth2, Emu::Oauth.get_token, token_type: "bearer"
+      faraday.request :oauth2, Emu::Oauth2.get_token, token_type: "bearer"
       faraday.response :multi_json
     end
 
