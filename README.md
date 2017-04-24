@@ -1,3 +1,5 @@
+UNDER DEVELOPMENT
+
 # Emu
 
 Emu is a lightweight Brightcove CMS api library for ruby.
