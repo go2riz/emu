@@ -3,7 +3,7 @@ require 'emu/brightcove/video'
 module Emu
   module Brightcove
     class API
-      include Video
+      include Video, Asset
 
       def api(url, args = {}, verb = 'get', options = {})
         raise AuthenticationError.new(nil, { message: "API requires an access token" }) unless Emu::OAuth2.get_token

@@ -61,13 +61,40 @@ require 'emu'
 api = Emu::Brightcove::API.new
 
 # Get a page of videos
+#
+# limit, default: 20
+# @see https://brightcovelearning.github.io/Brightcove-API-References/cms-api/v1/doc/index.html#api-videoGroup-Get_Videos
 api.get_videos("57838016001")
 
 # Get video count
 api.get_video_count("57838016001")
 
 # Get a video
+#
+# @param account_id Video Cloud account ID
+# @param video_id   Video Cloud video ID or (ref:reference_id
+# accounts/account_id/videos/video_id or
+# accounts/account_id/videos/ref:my_reference_id
 api.get_video("57838016001", "4492075574001")
+```
+
+## Asset
+```ruby
+require 'emu'
+
+api = Emu::Brightcove::API.new
+
+# Adds a poster file for a remote asset.
+# note: you can use ref:reference_id instead of video_id
+api.add_poster(57838016001, 4665727869001, {
+  remote_url: "http://learning-services-media.brightcove.com/images/great-blue-heron-poster.png"
+})
+
+# Adds a thumbnail file for a remote asset.
+# note: you can use ref:reference_id instead of video_id
+api.add_thumbnail(57838016001, 4665727869001, {
+  remote_url: "http://learning-services-media.brightcove.com/images/great-blue-heron-thumbnail.png"
+})
 ```
 ## Development
 
