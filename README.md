@@ -54,7 +54,21 @@ Emu.configure do |config|
   config.client_secret = <brightcove_client_secret>
 end
 ```
+## Video
+```ruby
+require 'emu'
 
+api = Emu::Brightcove::API.new
+
+# Get a page of videos
+api.get_videos("57838016001")
+
+# Get video count
+api.get_video_count("57838016001")
+
+# Get a video
+api.get_video("57838016001", "4492075574001")
+```
 ## Development
 
 

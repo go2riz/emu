@@ -1,5 +1,4 @@
 require 'faraday'
-require 'faraday_middleware'
 require 'faraday_middleware/multi_json'
 require 'emu/http_service/response'
 require 'emu/http_service/request'
@@ -12,9 +11,8 @@ module Emu
     end
 
     DEFAULT_MIDDLEWARE = Proc.new do |faraday|
-      faraday.adapter Faraday.default_adapter
-      faraday.request :oauth2, Emu::OAuth2.get_token, token_type: "bearer"
       faraday.response :multi_json
+      faraday.adapter Faraday.default_adapter
     end
 
     # Makes request directly to Brightcove
@@ -25,6 +23,7 @@ module Emu
     # @return [Emu::HTTPService::Response] a response object
     def self.make_request(request)
       conn = Faraday.new(Emu.api_path, &(faraday_middleware || DEFAULT_MIDDLEWARE))
+      conn.authorization :Bearer, Emu::OAuth2.get_token
 
       if request.verb == 'post'
         response = conn.post do |req|
