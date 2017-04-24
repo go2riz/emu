@@ -18,8 +18,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency 'redis', '~> 3.2.0', '>= 3.0.0'
-  spec.add_runtime_dependency 'oauth2', '~> 1.3.0', '>= 1.3.0'
+  spec.add_runtime_dependency 'redis', '~> 3.0.0', '>= 3.0.0'
+  spec.add_runtime_dependency 'oauth2', '~> 1.2.0', '>= 1.2.0'
   spec.add_runtime_dependency 'faraday', '~> 0.8.0', '>= 0.8.0'
   spec.add_runtime_dependency 'faraday_middleware-multi_json', '~> 0'
 
