@@ -1,4 +1,5 @@
 require 'emu/brightcove/video'
+require 'emu/brightcove/asset'
 
 module Emu
   module Brightcove

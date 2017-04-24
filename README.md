@@ -25,7 +25,7 @@ require 'redis'
 
 Emu.configure do |config|
   # Emu's connection to Redis
-  # 
+  #
   # Default: localhost:6379/0
   config.redis = Redis.new(host: 'localhost', port: '6379', db: 0)
 
@@ -95,6 +95,11 @@ api.add_poster(57838016001, 4665727869001, {
 api.add_thumbnail(57838016001, 4665727869001, {
   remote_url: "http://learning-services-media.brightcove.com/images/great-blue-heron-thumbnail.png"
 })
+
+# Gets the poster file for a give video
+# Note: you can only add one poster for a video
+# Note: you can use ref:reference_id instead of video_id
+api.get_poster_list(57838016001, 4665727869001)
 ```
 ## Development
 

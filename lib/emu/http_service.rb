@@ -25,14 +25,14 @@ module Emu
       conn = Faraday.new(Emu.api_path, &(faraday_middleware || DEFAULT_MIDDLEWARE))
       conn.authorization :Bearer, Emu::OAuth2.get_token
 
-      if request.verb == 'post'
-        response = conn.post do |req|
+      if request.verb == 'get' || request.verb == 'delete'
+        response = conn.get(request.url, request.post_args)
+      else
+        response = conn.send(request.verb) do |req|
           req.url request.url
           req.headers['Content-Type'] = 'application/json'
           req.body = request.post_args.to_json
         end
-      else
-        response = conn.send(request.verb, request.url, request.post_args)
       end
 
       Emu::HTTPService::Response.new(response.status.to_i, response.body, response.headers)
