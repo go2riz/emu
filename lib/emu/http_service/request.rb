@@ -3,11 +3,11 @@ module Emu
     class Request
       attr_reader :url, :args, :verb, :options
 
-      def initialize(url:, verb:, args: {}, options: {})
-        @url = url
-        @verb = verb
-        @args = args
-        @options = options
+      def initialize(params)
+        @url = params[:url]
+        @verb = params[:verb]
+        @args = params[:args] || {}
+        @options = params[:options] || {}
       end
 
       def post_args
