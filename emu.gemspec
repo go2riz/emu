@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'redis', '~> 3', '>= 3'
   spec.add_runtime_dependency 'oauth2', '~> 1.2.0', '>= 1.2.0'
-  spec.add_runtime_dependency 'faraday', '~> 0.8.0', '>= 0.8.0'
+  spec.add_runtime_dependency 'faraday', ['>= 0.7.4', '< 1.0']
   spec.add_runtime_dependency 'faraday_middleware-multi_json', '~> 0'
 
   spec.add_development_dependency "bundler", "~> 1.12"
