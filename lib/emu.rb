@@ -22,7 +22,10 @@ module Emu
     end
 
     def redis
-      config.redis
+      raise ArgumentError, "requires a block" unless block_given?
+      config.redis.with do |conn|
+        yield conn
+      end
     end
 
     def api_path

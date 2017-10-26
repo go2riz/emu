@@ -24,6 +24,17 @@ module Emu
       def get_video(account_id, video_id)
         api("accounts/#{account_id}/videos/#{video_id}")
       end
+
+      # Gets an array of sources(renditions) for a video
+      #
+      # @param account_id Video Cloud account ID
+      # @param video_id   Video Cloud video ID or (ref:reference_id
+      # accounts/account_id/videos/video_id/sources
+      # or
+      # accounts/account_id/videos/ref:my_reference_id/sources
+      def get_video_sources(account_id, video_id)
+        api("accounts/#{account_id}/videos/#{video_id}/sources")
+      end
     end
   end
 end

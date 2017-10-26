@@ -1,4 +1,5 @@
 require 'redis'
+require "emu/redis_connection"
 
 class Emu::Configuration
   attr_accessor :client_id
@@ -30,10 +31,18 @@ class Emu::Configuration
   attr_accessor :api_path
 
   def initialize
-    @redis          = Redis.new
+    @redis          = Emu::RedisConnection.create
     @redis_prefix   = :emu
     @site           = "https://data.brightcove.com/"
     @token_url      = "https://oauth.brightcove.com/v3/access_token"
     @api_path       = "https://cms.api.brightcove.com/v1"
+  end
+
+  def redis=(hash)
+    @redis = if hash.is_a?(ConnectionPool)
+      hash
+    else
+      Emu::RedisConnection.create(hash)
+    end
   end
 end
