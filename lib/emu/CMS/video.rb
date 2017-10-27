@@ -1,5 +1,5 @@
 module Emu
-  module Brightcove
+  module CMS
     module Video
       # Gets a page of video objects
       #

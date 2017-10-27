@@ -9,10 +9,6 @@ module Emu
         @args = params[:args] || {}
         @options = params[:options] || {}
       end
-
-      def post_args
-        verb == 'get' ? {} : args
-      end
     end
   end
 end

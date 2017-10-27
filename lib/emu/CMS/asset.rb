@@ -1,5 +1,5 @@
 module Emu
-  module Brightcove
+  module CMS
     module Asset
       # Adds a asset file for a remote asset.
       # note: you can use ref:reference_id instead of video_id

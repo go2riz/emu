@@ -1,11 +1,15 @@
 # include emu modules
 require "emu/errors"
 require "emu/api"
+require "emu/cms/api"
+require "emu/policy/api"
+require "emu/playback/api"
 require "emu/oauth2"
 
 require "emu/http_service"
 require "emu/configuration"
 require "emu/version"
+require "emu/redis_connection"
 
 module Emu
   # A Ruby client library for Brightcove CMS API.
@@ -28,12 +32,20 @@ module Emu
       end
     end
 
-    def api_path
-      config.api_path
+    def cms_api_path
+      config.cms_api_path
+    end
+
+    def policy_api_path
+      config.policy_api_path
+    end
+
+    def playback_api_path
+      config.playback_api_path
     end
   end
 
-  def self.make_request(url, args, verb, options = {})
-    HTTPService.make_request(HTTPService::Request.new(url: url, args: args, verb: verb, options: options))
+  def self.make_request(api_path, url, args, verb, options = {},  policy_key = nil)
+    HTTPService.make_request(api_path, HTTPService::Request.new(url: url, args: args, verb: verb, options: options), policy_key)
   end
 end

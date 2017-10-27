@@ -21,17 +21,21 @@ module Emu
     # @param request a Emu::HTTPService::Request object
     #
     # @return [Emu::HTTPService::Response] a response object
-    def self.make_request(request)
-      conn = Faraday.new(Emu.api_path, &(faraday_middleware || DEFAULT_MIDDLEWARE))
-      conn.authorization :Bearer, Emu::OAuth2.get_token
+    def self.make_request(api_path, request, policy_key = nil)
+      conn = Faraday.new(api_path, &(faraday_middleware || DEFAULT_MIDDLEWARE))
+      if policy_key.nil?
+        conn.authorization :Bearer, Emu::OAuth2.get_token
+      else
+        conn.authorization "BCOV-Policy", policy_key
+      end
 
       if request.verb == 'get' || request.verb == 'delete'
-        response = conn.get(request.url, request.post_args)
+        response = conn.get(request.url, request.args)
       else
         response = conn.send(request.verb) do |req|
           req.url request.url
           req.headers['Content-Type'] = 'application/json'
-          req.body = request.post_args.to_json
+          req.body = request.args.to_json
         end
       end
 
