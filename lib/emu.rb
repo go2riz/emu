@@ -1,7 +1,7 @@
 # include emu modules
 require "emu/errors"
 require "emu/api"
-require "emu/cms/api"
+require "emu/CMS/api"
 require "emu/policy/api"
 require "emu/playback/api"
 require "emu/oauth2"
