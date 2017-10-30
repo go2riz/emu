@@ -9,9 +9,9 @@ module Emu
 
       def create_policy_key(account_id)
         body = {
-          "key-data": {
-            "account-id": account_id,
-            "apis": ["search"]
+          "key-data" => {
+            "account-id" => account_id,
+            "apis" => ["search"]
           }
         }
         api("accounts/#{account_id}/policy_keys", body, "post")
