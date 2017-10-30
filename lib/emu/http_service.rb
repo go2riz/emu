@@ -3,20 +3,6 @@ require 'faraday_middleware/multi_json'
 require 'emu/http_service/response'
 require 'emu/http_service/request'
 
-module Faraday
-  module NestedParamsEncoder
-    def self.escape(arg)
-      arg
-    end
-  end
-
-  module FlatParamsEncoder
-    def self.escape(arg)
-      arg
-    end
-  end
-end
-
 module Emu
   module HTTPService
     class << self
