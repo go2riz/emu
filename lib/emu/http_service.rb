@@ -9,6 +9,12 @@ module Faraday
       arg
     end
   end
+
+  module FlatParamsEncoder
+    def self.escape(arg)
+      arg
+    end
+  end
 end
 
 module Emu
