@@ -1,5 +1,5 @@
-require 'emu/cms/video'
-require 'emu/cms/asset'
+require 'emu/CMS/video'
+require 'emu/CMS/asset'
 
 class Emu::CMS::API < Emu::API
   include Emu::CMS::Video, Emu::CMS::Asset
