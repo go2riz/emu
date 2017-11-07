@@ -12,9 +12,9 @@ module Emu
     end
 
     DEFAULT_MIDDLEWARE = Proc.new do |faraday|
+      faraday.request :params_encoder
       faraday.response :multi_json
       faraday.adapter Faraday.default_adapter
-      faraday.options.params_encoder = ParamsEncoder
     end
 
     # Makes request directly to Brightcove
