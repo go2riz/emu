@@ -2,6 +2,7 @@ require 'faraday'
 require 'faraday_middleware/multi_json'
 require 'emu/http_service/response'
 require 'emu/http_service/request'
+require 'emu/http_service/params_encoder'
 
 module Emu
   module HTTPService
@@ -13,6 +14,7 @@ module Emu
     DEFAULT_MIDDLEWARE = Proc.new do |faraday|
       faraday.response :multi_json
       faraday.adapter Faraday.default_adapter
+      faraday.options.params_encoder = ParamsEncoder
     end
 
     # Makes request directly to Brightcove
