@@ -31,6 +31,7 @@ class Emu::Configuration
   attr_accessor :cms_api_path
   attr_accessor :policy_api_path
   attr_accessor :playback_api_path
+  attr_accessor :ingest_api_path
 
   def initialize
     @redis              = Emu::RedisConnection.create
@@ -40,6 +41,7 @@ class Emu::Configuration
     @cms_api_path       = "https://cms.api.brightcove.com/v1"
     @policy_api_path    = "https://policy.api.brightcove.com/v1"
     @playback_api_path  = "https://edge.api.brightcove.com/playback/v1"
+    @ingest_api_path    = "https://ingest.api.brightcove.com/v1"
   end
 
   def redis=(hash)

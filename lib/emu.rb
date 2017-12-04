@@ -4,6 +4,7 @@ require "emu/api"
 require "emu/CMS/api"
 require "emu/policy/api"
 require "emu/playback/api"
+require "emu/ingest/api"
 require "emu/oauth2"
 
 require "emu/http_service"
@@ -42,6 +43,10 @@ module Emu
 
     def playback_api_path
       config.playback_api_path
+    end
+
+    def ingest_api_path
+      config.ingest_api_path
     end
   end
 
