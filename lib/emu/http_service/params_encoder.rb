@@ -13,7 +13,7 @@ module Emu
       self.mime_type = 'application/json'.freeze
 
       def call(env)
-        env[:url].query = URI.unescape(env[:url].query)
+        env[:url].query = URI.unescape(env[:url].query) unless env[:url].query.nil?
         @app.call(env)
       end
 
