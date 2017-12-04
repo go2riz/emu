@@ -60,7 +60,7 @@ end
 ```ruby
 require 'emu'
 
-api = Emu::Brightcove::API.new
+api = Emu::CMS::API.new
 
 # Get a page of videos
 #
@@ -84,7 +84,7 @@ api.get_video("57838016001", "4492075574001")
 ```ruby
 require 'emu'
 
-api = Emu::Brightcove::API.new
+api = Emu::CMS::API.new
 
 # Adds a poster file for a remote asset.
 # note: you can use ref:reference_id instead of video_id
