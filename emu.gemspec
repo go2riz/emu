@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'emu'
-  spec.version       = Emu::VERSION
+  spec.version       = "0.2.2"
   spec.authors       = ['Rizwan Haider']
   spec.email         = ['go2riz@gmail.com']
 
