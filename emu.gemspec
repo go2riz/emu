@@ -2,16 +2,16 @@
 
 lib = File.expand_path('../lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'emu/version'
+# require 'emu/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'emu'
   spec.version       = Emu::VERSION
-  spec.authors       = ['Menghong Li']
-  spec.email         = ['lp_meng23@live.cn']
+  spec.authors       = ['Rizwan Haider']
+  spec.email         = ['go2riz@gmail.com']
 
   spec.summary       = 'A lightweight Brightcove CMS API library for Ruby apps using Redis.'
-  spec.homepage      = 'https://github.com/Menghongli/emu'
+  spec.homepage      = 'https://github.com/go2riz/emu'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
